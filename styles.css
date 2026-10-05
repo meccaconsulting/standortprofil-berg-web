@@ -162,3 +162,19 @@ footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 30
   .section-card { box-shadow: none; padding: 0; }
   figure.fig { break-inside: avoid; }
 }
+
+/* Diskrete Leiste für weitere Fassungen (Archiv, Entwürfe) */
+.meta-bar { background: #15191c; border-bottom: 1px solid rgba(255,255,255,.05); }
+.meta-bar .mb-inner {
+  max-width: var(--maxw, 1180px); margin: 0 auto; padding: 4px 16px;
+  display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 6px;
+  font: 12px/1.4 "Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+.meta-bar .mb-note { color: #6f797f; margin-right: auto; }
+.meta-bar .mb-btn {
+  color: #8b959b; text-decoration: none; padding: 1px 8px;
+  border: 1px solid rgba(255,255,255,.1); border-radius: 999px; white-space: nowrap;
+}
+.meta-bar a.mb-btn:hover { color: #e3e7ea; border-color: rgba(255,255,255,.28); }
+.meta-bar .mb-btn.is-current { color: #c9cfd3; border-color: rgba(255,255,255,.22); }
+@media print { .meta-bar { display: none; } }
