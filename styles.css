@@ -178,3 +178,46 @@ footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 30
 .meta-bar a.mb-btn:hover { color: #e3e7ea; border-color: rgba(255,255,255,.28); }
 .meta-bar .mb-btn.is-current { color: #c9cfd3; border-color: rgba(255,255,255,.22); }
 @media print { .meta-bar { display: none; } }
+
+/* Interaktive Geländebegehung */
+.begehung { margin: 22px 0 28px; }
+.begehung-map { height: 540px; border: 1px solid var(--line); border-radius: 8px; background: #dfe3e6; z-index: 0; }
+.begehung-bar { display: flex; gap: 12px; align-items: center; margin-top: 10px; }
+.begehung-start { flex: none; font: 600 .95rem inherit; font-family: inherit; color: #fff; background: var(--accent-dark); border: 0; border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+.begehung-start:hover { background: var(--accent); }
+.begehung-strip { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+.begehung-strip button { position: relative; flex: none; padding: 0; border: 2px solid transparent; border-radius: 6px; background: none; cursor: pointer; line-height: 0; }
+.begehung-strip button img { width: 74px; height: 56px; object-fit: cover; border-radius: 4px; }
+.begehung-strip button span { position: absolute; left: 3px; top: 3px; font: 700 .7rem/1 sans-serif; color: #fff; background: rgba(0,0,0,.6); border-radius: 3px; padding: 2px 4px; }
+.begehung-strip button.is-active, .begehung-strip button:hover { border-color: var(--accent); }
+.begehung-note { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+.cam-icon { background: none; border: 0; }
+.cam-icon svg { overflow: visible; cursor: pointer; }
+.cam-icon .cone { fill: rgba(232,150,30,.28); stroke: none; }
+.cam-icon .arrow { fill: #e8961e; stroke: #fff; stroke-width: 1.2; }
+.cam-icon .dot { fill: #1d2327; stroke: #fff; stroke-width: 2.2; }
+.cam-icon .glyph rect { fill: #fff; }
+.cam-icon .glyph .lens { fill: #1d2327; }
+.cam-icon .num { font: 700 11px/1 sans-serif; fill: #fff; stroke: #1d2327; stroke-width: 3px; paint-order: stroke; }
+.cam-icon:hover .dot, .cam-icon.is-active .dot { fill: var(--accent-dark); }
+.cam-icon.is-active .cone { fill: rgba(232,150,30,.5); }
+.begehung-viewer { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; background: rgba(15,18,20,.86); padding: 16px; }
+.begehung-viewer.open { display: flex; }
+.bv-box { position: relative; width: min(1100px, 100%); max-height: 100%; display: flex; flex-direction: column; background: #111; border-radius: 10px; overflow: hidden; }
+.bv-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.bv-stage img { max-width: 100%; max-height: calc(100vh - 170px); object-fit: contain; display: block; }
+.bv-prev, .bv-next { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 64px; border: 0; border-radius: 8px; background: rgba(0,0,0,.45); color: #fff; font-size: 2.2rem; cursor: pointer; }
+.bv-prev { left: 8px; } .bv-next { right: 8px; }
+.bv-prev:hover, .bv-next:hover { background: rgba(0,0,0,.7); }
+.bv-close { position: absolute; right: 8px; top: 8px; z-index: 2; width: 38px; height: 38px; border: 0; border-radius: 50%; background: rgba(0,0,0,.55); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.bv-text { padding: 12px 16px 14px; color: #e9ecee; background: #1d2327; }
+.bv-text p { margin: 0; }
+.bv-title { font-weight: 700; font-size: 1.05rem; }
+.bv-meta { font-size: .82rem; color: #f0b25a; margin: 2px 0 4px !important; }
+.bv-desc { font-size: .92rem; color: #cfd5d9; }
+@media (max-width: 700px) {
+  .begehung-map { height: 420px; }
+  .begehung-bar { flex-direction: column; align-items: stretch; }
+  .bv-prev, .bv-next { width: 38px; height: 52px; font-size: 1.8rem; }
+}
+@media print { .begehung, .begehung-viewer, #begehung + p { display: none; } }

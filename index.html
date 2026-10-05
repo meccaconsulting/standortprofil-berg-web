@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -135,6 +136,28 @@
   <div class="two-col">
     <div class="box info"><h4>Technische Infrastruktur</h4><p><b>Glasfaser:</b> symmetrischer Gigabit-Anschluss (FTTH, A1) am Zollamtsstandort, Datenstand Q1/2026. <b>Mobilfunk:</b> 5G bis 563 Mbit/s (Drei), 4G aller drei Netzbetreiber. <b>Strom:</b> 110-kV-Leitung in rund 1 km Entfernung (Kap. 6).</p></div>
     <div class="box info"><h4>Straße</h4><p>Das Areal liegt direkt an der B9 (Pressburger Straße), die in die Viedenská cesta nach Bratislava übergeht. Auf österreichischer Seite gibt es keinen eigenen Autobahnanschluss. Die slowakische D2 ist rund 1 km entfernt (Luftlinie), die A6 bei Kittsee rund 4,5 km.</p></div>
+  </div>
+
+  <h3 id="begehung">Interaktive Geländebegehung</h3>
+  <p>Die Karte zeigt das Projektareal im Orthofoto. Jedes Kamerasymbol markiert einen Fotostandort, der Pfeil die Blickrichtung. Ein Klick auf ein Symbol öffnet das Foto; mit den Pfeiltasten geht es von Standort zu Standort durch das Areal.</p>
+  <div class="begehung">
+    <div id="begehung-map" class="begehung-map" role="region" aria-label="Karte der Fotostandorte im Projektareal"></div>
+    <div class="begehung-bar">
+      <button type="button" id="begehung-start" class="begehung-start">Rundgang starten ▸</button>
+      <div id="begehung-strip" class="begehung-strip" aria-label="Fotos der Begehung"></div>
+    </div>
+    <p class="begehung-note">Fotostandorte und Blickrichtungen sind aus dem Bildinhalt rekonstruiert (Fotos ohne GPS-Daten), Lagegenauigkeit rund ±15 m. Orange gestrichelt: Projektareal. Quelle: eigene Aufnahmen; Orthofoto und Karte: basemap.at (CC BY 4.0).</p>
+  </div>
+  <div class="begehung-viewer" id="begehung-viewer" role="dialog" aria-label="Foto der Geländebegehung">
+    <div class="bv-box">
+      <button type="button" class="bv-close" aria-label="Schließen">×</button>
+      <div class="bv-stage">
+        <button type="button" class="bv-prev" aria-label="Vorheriges Foto">‹</button>
+        <img alt="">
+        <button type="button" class="bv-next" aria-label="Nächstes Foto">›</button>
+      </div>
+      <div class="bv-text"><p class="bv-title"></p><p class="bv-meta"></p><p class="bv-desc"></p></div>
+    </div>
   </div>
 
   <h3>Leitbild und Zielbranchen-Hypothese</h3>
@@ -661,5 +684,7 @@
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") lb.classList.remove("open"); });
   })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="assets/begehung/begehung.js"></script>
 </body>
 </html>
